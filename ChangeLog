@@ -1,0 +1,8 @@
+2000-11-23  Martin Maechler  <maechler@stat.math.ethz.ch>
+
+	Version: 2.2-3
+
+	* ChangLog: (new)
+	* R/adapt.R: make sure that extra arguments "..." are passed (n >= 2).
+	   (+ add extra space according to R style standards).
+	* README* : Renamed files. 
