@@ -1,6 +1,10 @@
 #include "S.h"
 #include "Rinternals.h"
 
+void F77_NAME(adapt)(int *ndim, double *a, double *b, int *minpts, int
+		     *maxpts, double *eps, double *relerr, int *lenwrk,
+		     double *wrkstr, double *finest, int *ifail);
+
 static SEXP rho;
 static SEXP f;
 

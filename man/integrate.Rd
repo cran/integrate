@@ -1,12 +1,12 @@
 \name{integrate}
-\title{Adaptive Integration in 1--20 Dimensions.}
+\alias{adapt}
+\alias{integrate}
+\alias{print.integration}
+\title{Adaptive Integration in 1--20 Dimensions}
 \usage{
 adapt(ndim, lower, upper, minpts, maxpts, functn, eps,\dots)
 integrate(functn, lower,upper,minpts=100,maxpts=500,eps=0.01,\dots)
 }
-\alias{adapt}
-\alias{integrate}
-\alias{print.integrate}
 \description{
     \code{integrate()} integrates a function of 1 variable over a
     specified interval, i.e. it computes
