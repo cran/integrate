@@ -4,7 +4,7 @@ cMM external routine adphlp is always called, and passed a pointer
 cMM to the external s function.
 cMM					Michael Meyer, October 1989.
 
-      subroutine adapt(ndim,a,b,minpts,maxpts,functn,eps,relerr,
+      subroutine adapt(ndim,a,b,minpts,maxpts,eps,relerr,
      *	   lenwrk,wrkstr,finest,ifail)
 c***begin prologue adapt
 c  adaptive multidimensional integration subroutine
@@ -34,6 +34,7 @@ c
 c  functn  externally declared user defined function to be integrated.
 c	   it must have parameters (ndim,z), where z is a real array
 c	   of dimension ndim.
+cTSL this function has been replaced by the fixed function adhlp
 c  eps	   required relative accuracy
 c  lenwrk  length of array wrkstr of working storage, the routine
 c	   needs (2*ndim+3)*(1+maxpts/rulcls)/2 for lenwrk if
@@ -73,8 +74,8 @@ c***end prologue adapt
       implicit none
 
 C-- Arguments:
-      double precision functn
-      external functn
+C      double precision functn
+C      external functn
 
       integer ndim, minpts,maxpts, lenwrk, ifail
       double precision a(ndim), b(ndim), eps, relerr, wrkstr(lenwrk),
@@ -123,7 +124,7 @@ c*****	end subroutine initialisation
       sbrgns=rgnstr
 
 C-- REPEAT --- (outermost loop) -------
-   40 call bsrl(ndim,center,width,functn,maxcls,rulcls,
+   40 call bsrl(ndim,center,width,maxcls,rulcls,
      *	   errmin,rgnerr,rgnval,divaxo,divaxn)
       finest=finest+rgnval
       wrkstr(lenwrk)=wrkstr(lenwrk)+rgnerr

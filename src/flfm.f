@@ -1,5 +1,5 @@
       double precision function flsm(s,center,hwidth,x,m,mp,maxord,
-     * g,f,sumcls)
+     * g,sumcls)
 c
 c***  function to compute fully symmetric basic rule sum
 c
@@ -30,7 +30,7 @@ c*******  compute centrally symmetric sum for permutation mp
    30 continue
    40 sumcls = sumcls + 1
 cmmm
-      intsum = intsum + adphlp(f,s,x)
+      intsum = intsum + adphlp(s,x)
       do 50 i=1,s
         mpi = mp(i) + 1
         if(g(mpi).ne.zero) hwidth(i) = -hwidth(i)

@@ -1,4 +1,4 @@
-      subroutine symrl(s, center, hwidth, f, minord, maxord, intvls,
+      subroutine symrl(s, center, hwidth, minord, maxord, intvls,
      *     intcls, numsms, weghts, fulsms, fail)
 c  multidimensional fully symmetric rule integration subroutine
 c
@@ -53,7 +53,7 @@ c		   range
 c***********************************************************************
 cmmm	  external f
 ctsl	real f
-       double precision f
+ctsl       double precision f
 c***  for double precision change real to double precision
 c      in the next statement
       integer d, i, fail, k(20), intcls, prtcnt, l, m(20), maxord,
@@ -137,7 +137,7 @@ c
       fulwgt = wht(s,moment,m,k,modofm,d,maxrdm,momprd)
       sumcls = 0
       if (weghts(prtcnt).eq.zero .and. fulwgt.ne.zero) fulsms(prtcnt) =
-     * flsm(s, center, hwidth, moment, m, k, maxord, g, f, sumcls)
+     * flsm(s, center, hwidth, moment, m, k, maxord, g, sumcls)
       intcls = intcls + sumcls
       intval = intval + fulwgt*fulsms(prtcnt)
       weghts(prtcnt) = weghts(prtcnt) + fulwgt

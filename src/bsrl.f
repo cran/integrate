@@ -1,12 +1,10 @@
-      subroutine bsrl(s, center,hwidth, f, maxvls,funcls,
+      subroutine bsrl(s, center,hwidth, maxvls,funcls,
      *                  errmin,errest,basest,divaxo,divaxn)
 
       implicit none
 C-- Arguments:
       integer s
       double precision center(s), hwidth(s)
-      EXTERNAL f
-      double precision f
       integer maxvls,funcls, divaxo,divaxn
       double precision errmin, errest, basest
 C
@@ -27,7 +25,7 @@ C-- Local Variables:
       mindeg = 4
       minord = 0
       do 10 maxord = mindeg,maxdeg
-         call symrl(s, center, hwidth, f, minord, maxord, intvls,
+         call symrl(s, center, hwidth, minord, maxord, intvls,
      *        intcls, 200, weghts, fulsms, ifail)
          if (ifail.eq.2) goto 20
          errest = dabs(intvls(maxord)  -intvls(maxord-1))
@@ -46,20 +44,20 @@ C-- Local Variables:
          z(i) = center(i)
  30   continue
 cmmm
-      sum0 = adphlp(f,s,z)
+      sum0 = adphlp(s,z)
       do 40 i = 1,s
          z(i) = center(i) - x1*hwidth(i)
 cmmm
-         sum1 = adphlp(f,s,z)
+         sum1 = adphlp(s,z)
          z(i) = center(i) + x1*hwidth(i)
 
-         sum1 = sum1 + adphlp(f,s,z)
+         sum1 = sum1 + adphlp(s,z)
          z(i) = center(i) - x2*hwidth(i)
 
-         sum2 = adphlp(f,s,z)
+         sum2 = adphlp(s,z)
          z(i) = center(i) + x2*hwidth(i)
 
-         sum2 = sum2 + adphlp(f,s,z)
+         sum2 = sum2 + adphlp(s,z)
          z(i) = center(i)
 
          dif = dabs((sum1-two*sum0) - (x1/x2)**2*(sum2-two*sum0))
